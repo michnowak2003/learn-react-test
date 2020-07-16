@@ -72,3 +72,16 @@ test('if counter is zero, clicking decrement button do not change counter displa
 
     expect(wrapper.state('counter')).toBe(0);
 })
+
+test('if counter is zero, clicking decrement button shows alert', () => {
+    const counter = 0;
+    const wrapper = setup(null, {counter})
+    const button = findByTestAttr(wrapper, 'decrement-button');
+
+
+    button.simulate('click');
+
+    const alert = findByTestAttr(wrapper, 'alert-display');
+
+    expect(alert.length).toBe(1)
+})
